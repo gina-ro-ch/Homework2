@@ -3,12 +3,73 @@
  */
 package Homework2;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
+import javafx.stage.Stage;
+
+import java.util.List;
+
+public class App extends Application{
+    private List<Courses> courses;
+
+
+
+    public static void main(String[] args){
+        Application.launch();
+
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+    public void start(Stage primaryStage) throws Exception{
+        primaryStage.setTitle("Course Information by Department");
+
+        BorderPane main = new BorderPane();
+        main.setPadding(new Insets(10,10,10,10));
+
+        //enter button section
+        BorderPane btnPane = new BorderPane();
+        Button enter = new Button("Enter");
+        btnPane.setRight(enter);
+        main.setTop(btnPane);
+
+        //enter button section
+
+
+        //display button
+        BorderPane dispbtnPane = new BorderPane();
+        Button display = new Button("display(All)");
+        dispbtnPane.setRight(display);
+        main.setBottom(dispbtnPane);
+
+        //combo box section
+        ComboBox comboBox = new ComboBox();
+        HBox hbox = new HBox(comboBox);
+        ObservableList<String> departments = FXCollections.observableArrayList("Computer Science", "Option 2", "Option 3");
+
+        comboBox.getItems().add("Computer Science");
+        comboBox.getItems().add("Mathematics");
+        comboBox.getItems().add("Chemistry");
+        comboBox.getItems().add("Physics");
+        comboBox.getItems().add("Botany");
+        comboBox.getItems().add("Zoology");
+        main.setCenter(hbox);
+
+        //combo box action
+
+
+        Scene scene = new Scene(main, 500,300);
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
     }
 }
