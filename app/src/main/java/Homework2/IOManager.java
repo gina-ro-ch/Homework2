@@ -3,10 +3,10 @@ package Homework2;
 import com.google.common.io.Files;
 
 import java.util.List;
+import java.util.Vector;
 
 public class IOManager {
-//    public List<Courses> readData(String file){
-//        try {
-//            Files.readString.Paths.getfile();
-//    } catch{
+    Vector object = new Vector();
+
+
 }

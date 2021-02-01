@@ -9,14 +9,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.util.Vector;
 
 import java.util.List;
 
@@ -39,21 +44,21 @@ public class App extends Application{
         //enter button section
         BorderPane btnPane = new BorderPane();
         Button enter = new Button("Enter");
-        btnPane.setRight(enter);
-        main.setTop(btnPane);
+        btnPane.setTop(enter);
+        //main.setTop(btnPane);
 
-        //enter button section
-
+        //enter button action
+        enter.setInputMethodRequests();
 
         //display button
         BorderPane dispbtnPane = new BorderPane();
         Button display = new Button("display(All)");
         dispbtnPane.setRight(display);
-        main.setBottom(dispbtnPane);
+        main.setCenter(dispbtnPane);
 
         //combo box section
         ComboBox comboBox = new ComboBox();
-        HBox hbox = new HBox(comboBox);
+        HBox hbox = new HBox( 10, comboBox,btnPane);
         ObservableList<String> departments = FXCollections.observableArrayList("Computer Science", "Option 2", "Option 3");
 
         comboBox.getItems().add("Computer Science");
@@ -62,9 +67,23 @@ public class App extends Application{
         comboBox.getItems().add("Physics");
         comboBox.getItems().add("Botany");
         comboBox.getItems().add("Zoology");
-        main.setCenter(hbox);
+        main.setTop(hbox);
 
-        //combo box action
+       //text boxes for user input
+        VBox userInputVBox = new VBox();
+        TextArea courseName = new TextArea();
+        //TextArea courseNum = new TextArea();
+        userInputVBox.getChildren().add(courseName);
+        //userInputVBox.getChildren().add(courseNum);
+        Label courseNameLabel = new Label("Enter Course Name:");
+        //Label courseNumLabel = new Label("Enter Course Number:");
+        courseNameLabel.setAlignment(Pos.BASELINE_CENTER);
+        //courseNameLabel.setAlignment(Pos.TOP_CENTER);
+        userInputVBox.getChildren().add(courseNameLabel);
+        userInputVBox.setAlignment(Pos.BASELINE_CENTER);
+        main.setBottom(userInputVBox);
+
+
 
 
         Scene scene = new Scene(main, 500,300);
