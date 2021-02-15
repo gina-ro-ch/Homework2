@@ -48,7 +48,9 @@ public class App extends Application{
         //main.setTop(btnPane);
 
         //enter button action
-        enter.setInputMethodRequests();
+       
+
+
 
         //display button
         BorderPane dispbtnPane = new BorderPane();
